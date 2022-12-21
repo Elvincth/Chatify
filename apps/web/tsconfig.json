@@ -1,0 +1,14 @@
+{
+  "extends": "tsconfig/nextjs.json",
+  "include": ["src/types/next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"],
+      "middleware/*": ["src/middleware/*"],
+      "models/*": ["src/models/*"],
+      "utils/*": ["src/utils/*"]
+    }
+  }
+}
