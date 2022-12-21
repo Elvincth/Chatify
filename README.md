@@ -1,13 +1,13 @@
 <br>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/6602723/208947973-a344908c-bdf0-461e-9bfd-c185509baa1c.png" alt="Chatify"  width="300"/>
+<img src="https://user-images.githubusercontent.com/6602723/208947973-a344908c-bdf0-461e-9bfd-c185509baa1c.png" alt="Chatify"  width="250"/>
 </p>
 
 <h3 align="center">
 <b>💬 An OpenPGP and Socket.io based end-to-end real time messaging application  🔒</b>
 </h3>
 
-<h4 align="center">
+<h3 align="center">
 ⚠️ Warning: This project is for educational purposes only. It is not intended to be used in production. ⚠️ 
 </h4>
 
@@ -69,8 +69,6 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Registration
 
-![Register](https://user-images.githubusercontent.com/6602723/208958144-ba410b3a-0f67-4d1e-b6d4-9db26f48870c.png)
-
 The user could first go to the register page “/register”, where they are required to fill in information including username, name, email and password. For the password in the user interface we added a strength meter, which will show the strength of the password, to make sure that the password is strong enough, to avoid brute force attack.
 
 Then, we will use the Bcrypt library to hash passwords, which prevents or mitigates rainbow table attacks, brute force attacks and dictionary attacks.
@@ -79,27 +77,23 @@ After the user has been registered, server will issue an JWT token, which is sig
 
 ![image](https://user-images.githubusercontent.com/6602723/208950648-95f5cade-4f82-4499-88d4-8dfa86b6d4e2.png)
 
+
+![Register](https://user-images.githubusercontent.com/6602723/208958144-ba410b3a-0f67-4d1e-b6d4-9db26f48870c.png)
+
 ### Login
-
-![Login](https://user-images.githubusercontent.com/6602723/208957998-e331abf6-a748-4958-a2a7-bbec6b1507ac.png)
-
 Users can go to the login page "/login", where they need to fill in their username and password. After the user fills in the required information and clicks the login button, the information will be sent to the server. The server will first compare the password with the hashed password in the database using the Bcrypt comparison function .It will pre-salt and calculate the hash value and check if it matches the password stored in our database.
 
 If the password is matched, the server will issue a JWT to the user where it is the and store in user cookie.
 
 ![image](https://user-images.githubusercontent.com/6602723/208951586-6aa7a6b8-0fb8-4758-a9e1-d2ae54788587.png)
 
+![Login](https://user-images.githubusercontent.com/6602723/208957998-e331abf6-a748-4958-a2a7-bbec6b1507ac.png)
+
 ## Chat system
 
 To implant the chat system, we used the open pgp library, which is a javascript implementation of the open pgp protocol. In addition, we used the socket.io library to enable real-time communication.
 
 ### Create a PGP key pair
-
-![Create PGP key pair](https://user-images.githubusercontent.com/6602723/208958275-a8d0e289-c721-4671-87ae-317803a08720.png)
-
-![Create passphrase](https://user-images.githubusercontent.com/6602723/208958285-55333288-24e3-4b7c-9b30-c9d343df9230.png)
-
-![Complete](https://user-images.githubusercontent.com/6602723/208958296-9f394524-2da3-40a0-992c-22213d38e839.png)
 
 Before the user can send a message, the user will have to generate a PGP key pair in the browser. Where, if we detect the user didn't have a key pair in their local storage, we will prompt the user to generate a PGP key pair or to import a PGP key pair.
 
@@ -111,6 +105,12 @@ Then, the generated public key will be sent to the server via a POST request in 
 
 ![image](https://user-images.githubusercontent.com/6602723/208952999-1ba0a65f-153e-483f-9f93-30e3621bffb0.png)
 
+![Create PGP key pair](https://user-images.githubusercontent.com/6602723/208958275-a8d0e289-c721-4671-87ae-317803a08720.png)
+
+![Create passphrase](https://user-images.githubusercontent.com/6602723/208958285-55333288-24e3-4b7c-9b30-c9d343df9230.png)
+
+![Complete](https://user-images.githubusercontent.com/6602723/208958296-9f394524-2da3-40a0-992c-22213d38e839.png)
+
 ### Export and import a PGP key pair
 
 Due to browser limitations, there is no persistent storage and key pairs are lost if the local storage is cleared or the browser is deleted. Therefore, to solve this problem, we provide a feature to export key pairs so that users can save the keys themselves and import them when they need to use them. Here, we will compress the key pair into .asc format and users can download the file and save it by themselves.
@@ -120,6 +120,10 @@ Due to browser limitations, there is no persistent storage and key pairs are los
 ![image 39](https://user-images.githubusercontent.com/6602723/208958953-caff5f3b-6c51-4947-979e-1039ac02f92f.png)
 
 ### Send and receive message using PGP protocol
+
+To secure the communication between the client and the server, we have made use of the open PGP library, which is a javascript implementation of the open PGP protocol, which will be explained in detail below.
+
+![image](https://user-images.githubusercontent.com/6602723/208954236-55ec29d5-719f-47c8-bd0d-3f4ebb1b0346.png)
 
 ![image 38](https://user-images.githubusercontent.com/6602723/208959096-e643e137-025a-498c-924b-8b499263fe81.png)
 
@@ -131,6 +135,3 @@ Due to browser limitations, there is no persistent storage and key pairs are los
 
 ![image 42](https://user-images.githubusercontent.com/6602723/208959511-210d793b-cae0-4f71-8687-2f238925e379.png)
 
-To secure the communication between the client and the server, we have made use of the open PGP library, which is a javascript implementation of the open PGP protocol, which will be explained in detail below.
-
-![image](https://user-images.githubusercontent.com/6602723/208954236-55ec29d5-719f-47c8-bd0d-3f4ebb1b0346.png)
